@@ -1,4 +1,4 @@
-jest.setTimeout(30000);
+jest.setTimeout(20000);
 
 const request = require("supertest");
 const app = require("../app");
@@ -6,12 +6,11 @@ const app = require("../app");
 let token;
 
 beforeAll(async () => {
-  // register admin user
+  // register
   await request(app).post("/api/auth/register").send({
     name: "Sweet Admin",
     email: "sweetadmin@test.com",
-    password: "password123",
-    role: "admin"
+    password: "password123"
   });
 
   // login

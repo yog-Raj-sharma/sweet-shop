@@ -1,46 +1,26 @@
 const Sweet = require("../models/Sweet");
 
-const addSweet = (data) => Sweet.create(data);
+exports.addSweet = async ({ name, category, price, quantity }) => {
+  const existing = await Sweet.findOne({
+    name: name.trim(),
+    category: category.trim()
+  });
 
-const getAllSweets = () => Sweet.find();
-
-const searchSweets = ({ name, category, minPrice, maxPrice }) => {
-  const query = {};
-
-  if (name) query.name = new RegExp(name, "i");
-  if (category) query.category = category;
-
-  if (minPrice || maxPrice) {
-    query.price = {};
-    if (minPrice) query.price.$gte = minPrice;
-    if (maxPrice) query.price.$lte = maxPrice;
+  if (existing) {
+    throw new Error("Sweet already exists");
   }
 
-  return Sweet.find(query);
+  return Sweet.create({ name, category, price, quantity });
 };
 
-const purchaseSweet = async (id) => {
+exports.purchaseSweet = async (id) => {
   const sweet = await Sweet.findById(id);
 
-  if (!sweet || sweet.quantity === 0) {
+  if (!sweet || sweet.quantity <= 0) {
     throw new Error("Out of stock");
   }
 
   sweet.quantity -= 1;
-  return sweet.save();
+  await sweet.save();
+  return sweet;
 };
-
-const restockSweet = async (id) => {
-  const sweet = await Sweet.findById(id);
-  sweet.quantity += 1;
-  return sweet.save();
-};
-
-module.exports = {
-  addSweet,
-  getAllSweets,
-  searchSweets,
-  purchaseSweet,
-  restockSweet
-};
- 
