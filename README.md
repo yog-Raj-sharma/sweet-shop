@@ -1,7 +1,7 @@
 # 🍬 Sweet Shop Management System
 
 A full-stack Sweet Shop Management System built using the **MERN stack**.  
-The application supports **role-based access** for Admin and Users, inventory management, and follows **Test-Driven Development (TDD)** principles for backend logic.
+The application supports **role-based access** for Admin and Users, inventory management, and follows **Test-Driven Development (TDD)** principles for core backend logic.
 
 ---
 
@@ -35,18 +35,19 @@ The application supports **role-based access** for Admin and Users, inventory ma
 ## 🧪 Test-Driven Development (TDD)
 
 ### Backend
-- Core business logic developed using **TDD**
+- Core business logic developed using **Test-Driven Development**
 - Followed **Red → Green → Refactor** workflow
-- Unit tests written for service-layer logic:
+- Service-layer unit tests written for:
   - Duplicate sweet prevention
-  - Purchase quantity handling
+  - Purchase quantity decrement logic
   - Out-of-stock validation
 
 ### Frontend
-- Selective TDD applied to critical UI behaviors:
-  - Role-based rendering
-  - Search/Filter toggle behavior
-  - Dashboard rendering
+- Selective TDD applied to critical UI behaviors
+- Focused on:
+  - Role-based UI rendering
+  - Search and filter toggle behavior
+  - Dashboard rendering logic
 
 ---
 
@@ -111,19 +112,32 @@ The application supports **role-based access** for Admin and Users, inventory ma
 
 ### 🗄 Database
 
-**MongoDB Compass View**  
-![Userss Data](./screenshots/mongodb-compass-users.png)
+**MongoDB Compass – Users Collection**  
+![Users Data](./screenshots/mongodb-compass-users.png)
 
-
+**MongoDB Compass – Sweets Collection**  
 ![Sweets Data](./screenshots/mongodb-compass-sweets.png)
 
 ---
 
-## ⚙️ Setup Instructions
+## 🧪 Test Report
 
-### Backend
+All backend and frontend tests were executed using Jest.
 
+### Backend Tests
+- Unit tests for service-layer business logic
+- API tests for authentication and sweet endpoints
+
+**Failing TDD Tests (Red Phase)**  
+![Failing TDD Tests](./screenshots/failing-TDD-tests.png)
+
+**Passing TDD Tests (Green Phase)**  
+![Passing TDD Tests](./screenshots/passing-TDD-tests.png)
+
+### Commands Used
 ```bash
 cd backend
-npm install
-npm run dev
+npm test
+
+cd frontend
+npm test
