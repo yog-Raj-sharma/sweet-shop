@@ -1,40 +1,129 @@
-# Sweet Shop Management System
+# 🍬 Sweet Shop Management System
 
-## Overview
-A full-stack Sweet Shop Management System built as part of the AI Kata assessment.
-The application supports authentication, role-based access, inventory management,
-and purchase operations for sweets.
+A full-stack Sweet Shop Management System built using the **MERN stack**.  
+The application supports **role-based access** for Admin and Users, inventory management, and follows **Test-Driven Development (TDD)** principles for backend logic.
 
 ---
 
-## Tech Stack
-- Frontend: React (Create React App)
-- Backend: Node.js, Express
-- Database: MongoDB
-- Authentication: JWT
-- Testing: Jest, Supertest
+## 🚀 Features
 
----
-
-## Features
-
-### Authentication
-- User registration and login
+### 👤 Authentication
+- User Registration & Login
 - JWT-based authentication
-- Role-based authorization (Admin / User)
+- Role-based access (Admin / User)
 
-### Sweet Management
-- View all available sweets
-- Search and filter by name, category, and price range
-- Purchase sweets (stock decreases automatically)
-- Disable purchase when stock reaches zero
-
-### Admin Features
-- Add new sweets
-- Update existing sweets
+### 🧑‍💼 Admin Features
+- Add new sweets to inventory
+- Prevent duplicate sweets (name + category)
+- Inline edit sweet details (price, quantity, category)
 - Delete sweets
+- View all sweets in a responsive grid layout
+
+### 🛒 User Features
+- View available sweets
+- Purchase sweets (stock-aware)
+- Search sweets by name or category
+- Filter sweets by category and price range
+
+### 🔍 Search & Filter
+- Toggle-based Search and Filter UI
+- Auto-reset results when toggles are closed
+- Clean and intuitive UX
 
 ---
 
-## Project Structure
+## 🧪 Test-Driven Development (TDD)
 
+### Backend
+- Core business logic developed using **TDD**
+- Followed **Red → Green → Refactor** workflow
+- Unit tests written for service-layer logic:
+  - Duplicate sweet prevention
+  - Purchase quantity handling
+  - Out-of-stock validation
+
+### Frontend
+- Selective TDD applied to critical UI behaviors:
+  - Role-based rendering
+  - Search/Filter toggle behavior
+  - Dashboard rendering
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React (Create React App)
+- Context API
+- CSS (Grid-based responsive layout)
+- Jest & React Testing Library
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- JWT Authentication
+- Jest & Supertest
+
+---
+
+## 📸 Screenshots
+
+### 🔐 Authentication
+
+**Login Page**  
+![Login Page](./screenshots/login.png)
+
+**Register Page**  
+![Register Page](./screenshots/register.png)
+
+---
+
+### 🧑‍💼 Admin View
+
+**Admin Dashboard**  
+![Admin Dashboard](./screenshots/admin-dashboard.png)
+
+**Add Sweet Functionality**  
+![Add Sweet](./screenshots/add-sweet.png)
+
+**Edit Sweet (Inline Editing)**  
+![Edit Sweet](./screenshots/edit-sweet.png)
+
+---
+
+### 👤 User View
+
+**User Dashboard**  
+![User Dashboard](./screenshots/user-dashboard.png)
+
+---
+
+### 🔎 Search & Filter
+
+**Search Functionality**  
+![Search](./screenshots/search.png)
+
+**Filter Functionality**  
+![Filter](./screenshots/filter.png)
+
+---
+
+### 🗄 Database
+
+**MongoDB Compass View**  
+![Userss Data](./screenshots/mongodb-compass-users.png)
+
+
+![Sweets Data](./screenshots/mongodb-compass-sweets.png)
+
+---
+
+## ⚙️ Setup Instructions
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev

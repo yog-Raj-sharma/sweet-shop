@@ -2,9 +2,23 @@ const Sweet = require("../models/Sweet");
 const sweetService = require("../services/sweet.service");
 
 exports.addSweet = async (req, res) => {
-  const sweet = await sweetService.addSweet(req.body);
+  const { name, category } = req.body;
+
+  const existingSweet = await Sweet.findOne({
+    name: name.trim(),
+    category: category.trim()
+  });
+
+  if (existingSweet) {
+    return res.status(400).json({
+      message: "Sweet already exists in this category"
+    });
+  }
+
+  const sweet = await Sweet.create(req.body);
   res.status(201).json(sweet);
 };
+
 
 exports.getSweets = async (req, res) => {
   const sweets = await sweetService.getAllSweets();
