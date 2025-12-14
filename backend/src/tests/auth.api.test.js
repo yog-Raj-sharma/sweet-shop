@@ -1,4 +1,4 @@
-{/*jest.setTimeout(20000);
+jest.setTimeout(20000);
 
 const request = require("supertest");
 const app = require("../app");
@@ -29,4 +29,4 @@ describe("Auth API", () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.token).toBeDefined();
   });
-}); */}
+}); 

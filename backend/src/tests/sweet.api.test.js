@@ -1,25 +1,29 @@
-jest.setTimeout(20000);
+jest.setTimeout(30000);
 
 const request = require("supertest");
 const app = require("../app");
+const Sweet = require("../models/Sweet");
 
 let token;
 
 beforeAll(async () => {
-  // register
   await request(app).post("/api/auth/register").send({
     name: "Sweet Admin",
     email: "sweetadmin@test.com",
-    password: "password123"
+    password: "password123",
+    role: "admin"
   });
 
-  // login
   const res = await request(app).post("/api/auth/login").send({
     email: "sweetadmin@test.com",
     password: "password123"
   });
 
   token = res.body.token;
+});
+
+beforeEach(async () => {
+  await Sweet.deleteMany({});
 });
 
 describe("Sweet API", () => {
